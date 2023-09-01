@@ -1,0 +1,424 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.8.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.8.0" type="image/png" sizes="32x32"><meta name="description" content="这是学习第四天css必备知识体系其中包含了 1. C3新增选择器 网站favicon图标 LOGO SEO优化 2. 2d转化 3d转化和动画的基本使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS第四天">
+<meta property="og:url" content="https://zjm2001.github.io/2023/08/23/CSS%E7%AC%AC%E5%9B%9B%E5%A4%A9/index.html">
+<meta property="og:site_name" content="ZJMのBlog">
+<meta property="og:description" content="这是学习第四天css必备知识体系其中包含了 1. C3新增选择器 网站favicon图标 LOGO SEO优化 2. 2d转化 3d转化和动画的基本使用">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zjm2001.github.io/images/image-20230819164337529.png">
+<meta property="og:image" content="https://zjm2001.github.io/images/image-20230819164549688.png">
+<meta property="og:image" content="https://zjm2001.github.io/images/image-20230819165737810.png">
+<meta property="article:published_time" content="2023-08-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-09-01T09:18:07.746Z">
+<meta property="article:author" content="ZJM">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="SEO">
+<meta property="article:tag" content="favicon图标">
+<meta property="article:tag" content="动画">
+<meta property="article:tag" content="2d&#x2F;3d转化">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zjm2001.github.io/images/image-20230819164337529.png"><title>CSS第四天 | ZJMのBlog</title><link ref="canonical" href="https://zjm2001.github.io/2023/08/23/CSS%E7%AC%AC%E5%9B%9B%E5%A4%A9/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><link rel="stylesheet" href="css/custom.css"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"25px","tocMaxDepth":4},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"carbon","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: true,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">ZJMの学习日志</div><div class="header-banner-info__subtitle">一个建立于21世纪的Blog，存活在互联网边缘！！！</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">CSS第四天</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2023-08-23</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2023-09-01</span></span></div></header><div class="post-body"><hr>
+
+        <h2 id="C3新增选择器"   >
+          <a href="#C3新增选择器" class="heading-link"><i class="fas fa-link"></i></a><a href="#C3新增选择器" class="headerlink" title="C3新增选择器"></a>C3新增选择器</h2>
+      
+        <h3 id="1-属性选择器"   >
+          <a href="#1-属性选择器" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-属性选择器" class="headerlink" title="1.属性选择器"></a>1.属性选择器</h3>
+      <figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">E<span class="selector-attr">[att]</span>                        选择有att属性的e元素</span><br><span class="line">E<span class="selector-attr">[att=val]</span>                   选择att属性且值为val的e元素</span><br><span class="line">e<span class="selector-attr">[att^=val]</span>                  选择att属性且值为val开头的e元素</span><br><span class="line">e<span class="selector-attr">[att$=val]</span>                  选择att属性且值为val结尾的e元素       权重为<span class="number">10</span></span><br><span class="line">e<span class="selector-attr">[att*=val]</span>                  选择att属性且值含有val的e元素  </span><br><span class="line"></span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="2-结构伪类选择器"   >
+          <a href="#2-结构伪类选择器" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-结构伪类选择器" class="headerlink" title="2.结构伪类选择器"></a>2.结构伪类选择器</h3>
+      <figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">e：first-child                                     父元素中第一个子元素e</span><br><span class="line">e：last-child                                     父元素中第最后一个子元素e</span><br><span class="line">e：nth-child（n）           匹配父元素中第n个子元素e（n还可以为even偶数）（odd奇数）</span><br><span class="line">n 还可以为公式   <span class="number">2</span>n     <span class="number">2</span>n+<span class="number">1</span>  <span class="number">5</span>n    n+<span class="number">5</span>    -n+<span class="number">5</span>     n从零开始累加</span><br><span class="line">e：first-of-type                              指定类型e的第一个元素</span><br><span class="line">e：last-of-type                             指定类型e的最后一个元素</span><br><span class="line">e：nth-of-type（n）                            指定类型e的第n个元素</span><br><span class="line"></span><br><span class="line">nth-child                          对父元素先排序再判断是否匹配e</span><br><span class="line">nth-of-type                 对父元素指定元素进行排序选择再找</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="3-伪元素选择器"   >
+          <a href="#3-伪元素选择器" class="heading-link"><i class="fas fa-link"></i></a><a href="#3-伪元素选择器" class="headerlink" title="3.伪元素选择器"></a>3.伪元素选择器</h3>
+      <figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">::before</span>                                  再元素前面插入内容</span><br><span class="line"><span class="selector-pseudo">::after</span>                                   再元素后面插入内容    行内元素  权重为一</span><br><span class="line">必须要有<span class="attribute">content</span>  可写内容</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="4-权重表优先级别"   >
+          <a href="#4-权重表优先级别" class="heading-link"><i class="fas fa-link"></i></a><a href="#4-权重表优先级别" class="headerlink" title="4. 权重表优先级别"></a>4. 权重表优先级别</h3>
+      <p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="/../images/image-20230819164337529.png"  alt="image-20230819164337529">
+      </p>
+
+        <h2 id="网站favicon图标"   >
+          <a href="#网站favicon图标" class="heading-link"><i class="fas fa-link"></i></a><a href="#网站favicon图标" class="headerlink" title="网站favicon图标"></a>网站favicon图标</h2>
+      <figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">选中ps中切图切出png格式然后到网站比特虫  http://www.bitbug.net/</span><br><span class="line">然后将图片保存到根目录下面   最后界面引入  （必须在head之间引入代码）</span><br><span class="line">&lt;link rel=<span class="string">&quot;shortcut icon&quot;</span> href=<span class="string">&quot; favicon.ico&quot;</span> /&gt;</span><br><span class="line">SEO  提高搜索  自然排名</span><br><span class="line">title   网站名称尽量不过<span class="number">30</span>字</span><br><span class="line">&lt;meta name=<span class="string">&quot;description&quot;</span> content=<span class="string">&quot;对网站介绍网站说明&quot;</span>&gt;</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="LOGO-SEO优化"   >
+          <a href="#LOGO-SEO优化" class="heading-link"><i class="fas fa-link"></i></a><a href="#LOGO-SEO优化" class="headerlink" title="LOGO SEO优化"></a>LOGO SEO优化</h2>
+      <p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="/../images/image-20230819164549688.png"  alt="image-20230819164549688">
+      </p>
+
+        <h2 id="2d-3d转化以及动画"   >
+          <a href="#2d-3d转化以及动画" class="heading-link"><i class="fas fa-link"></i></a><a href="#2d-3d转化以及动画" class="headerlink" title="2d&#x2F;3d转化以及动画"></a>2d&#x2F;3d转化以及动画</h2>
+      
+        <h3 id="1-2d转化-translate"   >
+          <a href="#1-2d转化-translate" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-2d转化-translate" class="headerlink" title="1. 2d转化(translate )"></a>1. 2d转化(translate )</h3>
+      <figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">transform</span>:translate (x ,y)             //移动(不会影响其他盒子位置)行内标签无用</span><br><span class="line">transform:<span class="built_in">translatex</span>(n)                   里面用百分数是移动本身盒子的百分数</span><br><span class="line">transform:<span class="built_in">translateY</span>(n)                       可用来将盒子垂直居中</span><br><span class="line">transform：rotate（deg单位）                  //旋转</span><br><span class="line">transform-origin：x y                      //转换旋转中心点（默认中心点）</span><br><span class="line">transform：scale（x，y）（宽，高）          //缩放（不会影响其他盒子和设置缩放中心点）</span><br><span class="line">（ 里面写数字 不限单位 就是倍数的意思）一个数字就是两个都变化 小于一就是缩放</span><br><span class="line"></span><br><span class="line">transform：translate (x ,y)   rotate（deg单位）scale（x，y）   //复合写法 记得先写移动最前</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="2-动画-animation"   >
+          <a href="#2-动画-animation" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-动画-animation" class="headerlink" title="2. 动画(animation)"></a>2. 动画(animation)</h3>
+      <p>1.<strong>先定义动画</strong></p>
+<p>方法一:(这个可以从0到100%)</p>
+<figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> 动画姓名&#123;                           </span><br><span class="line"><span class="number">0%</span>&#123;</span><br><span class="line">初始状态                                             </span><br><span class="line">&#125;                                                         </span><br><span class="line"><span class="number">100%</span>&#123;                             </span><br><span class="line">结束状态</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>方法二:(这种只有两种状态)</p>
+<figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">from</span>&#123; </span><br><span class="line">         <span class="attribute">background-position</span>: <span class="number">0</span> <span class="number">0</span>;</span><br><span class="line">     &#125;</span><br><span class="line"> <span class="selector-tag">to</span>&#123;</span><br><span class="line">        <span class="attribute">background-position</span>: <span class="number">1680px</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></div></figure>
+
+<p><strong>2.调用动画    给用用动画的加上</strong></p>
+<figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">animation-name</span>:动画名称;</span><br><span class="line"> <span class="attribute">animation-duration</span>: 时间;</span><br><span class="line">复合属性</span><br><span class="line"><span class="attribute">animation</span>：名称  持续时间  运动曲线 何时开始   播放次数 是否反方向 动画起始或结束状态</span><br><span class="line"><span class="attribute">animation-timing-function</span>:steps（分几步） ;              //运动曲线步长</span><br><span class="line">元素可以加多个动画用逗号隔开  </span><br></pre></td></tr></table></div></figure>
+
+<p>3.<strong>动画常用属性</strong></p>
+<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://blog.csdn.net/assokoo123/article/details/131693081" >使用方法参考</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>地址</p>
+<p>
+        <img   class="lazyload lazyload-gif"
+          src="/images/loading.svg" data-src="/../images/image-20230819165737810.png"  alt="image-20230819165737810">
+      </p>
+
+        <h3 id="3-3d转化-translate3d"   >
+          <a href="#3-3d转化-translate3d" class="heading-link"><i class="fas fa-link"></i></a><a href="#3-3d转化-translate3d" class="headerlink" title="3. 3d转化(translate3d)"></a>3. 3d转化(translate3d)</h3>
+      <figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">transform</span>：translate3d（x，y，z）                       //<span class="number">3</span>d位移（z后面单位一般为px）</span><br><span class="line">（z值为正向外走负则向里走）xyz不能省略没有就写零   z值越大看到的物体越大</span><br><span class="line"><span class="attribute">perspective</span>： <span class="number">500</span> （单位px）                           //透视 （写在被观察元素父盒子上）</span><br><span class="line"><span class="attribute">transform</span>：rotate3d （x,y,z,deg）                       //<span class="number">3</span>d旋转</span><br><span class="line"></span><br><span class="line">rotateX rotateY (左手准则 大拇指指向正值四根手指弯曲方向是正值)</span><br><span class="line">rotateZ    和<span class="number">2</span>d基本类似</span><br><span class="line"><span class="attribute">transform-style</span>：（flat  子元素不开启立体默认（preserve-<span class="number">3</span>d  子元素开启立体） //<span class="number">3</span>d呈现</span><br><span class="line">代码写给父级，但是影响子盒子</span><br></pre></td></tr></table></div></figure>
+
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://zjm2001.github.io">ZJM</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://zjm2001.github.io/2023/08/23/CSS%E7%AC%AC%E5%9B%9B%E5%A4%A9/">https://zjm2001.github.io/2023/08/23/CSS%E7%AC%AC%E5%9B%9B%E5%A4%A9/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-cn" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://zjm2001.github.io/tags/%E5%89%8D%E7%AB%AF/">前端</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://zjm2001.github.io/tags/SEO/">SEO</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://zjm2001.github.io/tags/favicon%E5%9B%BE%E6%A0%87/">favicon图标</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://zjm2001.github.io/tags/%E5%8A%A8%E7%94%BB/">动画</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://zjm2001.github.io/tags/2d-3d%E8%BD%AC%E5%8C%96/">2d/3d转化</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2023/08/25/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B8%83%E5%B1%80/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">移动端布局必须要懂的知识</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2023/08/22/CSS%E7%AC%AC%E4%B8%89%E5%A4%A9/"><span class="paginator-prev__text">CSS第三天</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="utterances-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#C3%E6%96%B0%E5%A2%9E%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">
+          C3新增选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.1.</span> <span class="toc-text">
+          1.属性选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%BB%93%E6%9E%84%E4%BC%AA%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.2.</span> <span class="toc-text">
+          2.结构伪类选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BC%AA%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.3.</span> <span class="toc-text">
+          3.伪元素选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%9D%83%E9%87%8D%E8%A1%A8%E4%BC%98%E5%85%88%E7%BA%A7%E5%88%AB"><span class="toc-number">1.4.</span> <span class="toc-text">
+          4. 权重表优先级别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%AB%99favicon%E5%9B%BE%E6%A0%87"><span class="toc-number">2.</span> <span class="toc-text">
+          网站favicon图标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LOGO-SEO%E4%BC%98%E5%8C%96"><span class="toc-number">3.</span> <span class="toc-text">
+          LOGO SEO优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2d-3d%E8%BD%AC%E5%8C%96%E4%BB%A5%E5%8F%8A%E5%8A%A8%E7%94%BB"><span class="toc-number">4.</span> <span class="toc-text">
+          2d&#x2F;3d转化以及动画</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2d%E8%BD%AC%E5%8C%96-translate"><span class="toc-number">4.1.</span> <span class="toc-text">
+          1. 2d转化(translate )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8A%A8%E7%94%BB-animation"><span class="toc-number">4.2.</span> <span class="toc-text">
+          2. 动画(animation)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3d%E8%BD%AC%E5%8C%96-translate3d"><span class="toc-number">4.3.</span> <span class="toc-text">
+          3. 3d转化(translate3d)</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/tx.jpeg" alt="avatar"></div><p class="sidebar-ov-author__text">握不住的沙，不如扬了它</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/zjm2001" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://res.abeim.cn/api/qq/?qq=2215539769" target="_blank" rel="noopener" data-popover="social.QQmail" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">QQ 邮箱</span></a><a class="sidebar-ov-social-item" href="https://res.abeim.cn/api/qq/?qq=2215539769" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">10</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">7</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">16</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-cn" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2023</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>ZJM</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v6.3.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.8.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="150" alpha="0.5" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.xml';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ 文章无标题 ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);
+
+function safeOpenUrl(url) {
+  var newTab = window.open();
+  newTab.opener = null;
+  newTab.location = url;
+}
+
+function extSearch(engine) {
+  var engines = {
+    google: 'https://www.google.com/search?q=',
+    bing: 'https://cn.bing.com/search?q=',
+    baidu: 'https://www.baidu.com/s?ie=UTF-8&wd=',
+  };
+  var host = window.location.host;
+  var query = $('.search-input input').val().toLowerCase().trim();
+  var uri = engines[engine] + query + ' site:' + host;
+
+  if (query) {
+    safeOpenUrl(uri);
+  } else {
+    Stun.utils.popAlert('warning', '请输入字符');
+  }
+}
+
+var assistSearchList = window.CONFIG.assistSearch;
+
+if (Array.isArray(assistSearchList)) {
+  assistSearchList.forEach(function (name) {
+    document.querySelector('.search-btns-item--' + name).addEventListener('click', function () {
+      extSearch(name);
+    }, false);
+  });
+}</script><script>function loadUtterances() {
+  var d = document, s = d.createElement('script');
+  var container = d.getElementById('utterances-container');
+
+  if (!container) {
+    return;
+  }
+  s.src = 'https://utteranc.es/client.js';
+  s.setAttribute('repo', 'zjm2001/comment');
+  s.setAttribute('issue-term', 'title');
+  s.setAttribute('label', 'utterances');
+  s.setAttribute('theme', 'github-light');
+  s.setAttribute('crossorigin', 'anonymous');
+  s.setAttribute('async', '');
+  if (false) {
+    s.setAttribute('data-pjax-rm', '');
+  }
+  container.append(s);
+}
+
+if (false) {
+  loadUtterances();
+} else {
+  window.addEventListener('DOMContentLoaded', loadUtterances, false);
+}</script><script src="/js/utils.js?v=2.8.0"></script><script src="/js/stun-boot.js?v=2.8.0"></script><script src="/js/scroll.js?v=2.8.0"></script><script src="/js/header.js?v=2.8.0"></script><script src="/js/sidebar.js?v=2.8.0"></script><script type="application/json" src="/search.xml"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/haruto.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body></html>

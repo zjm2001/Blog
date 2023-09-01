@@ -1,0 +1,442 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.8.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.8.0" type="image/png" sizes="32x32"><meta name="description" content="关于移动端布局你必须要懂的知识 1. 视口什么是视口,二倍图,css初始化 2. flex布局 媒体查询 less sass 3. 单位px rem vw vh">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端布局必须要懂的知识">
+<meta property="og:url" content="https://zjm2001.github.io/2023/08/25/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B8%83%E5%B1%80/index.html">
+<meta property="og:site_name" content="ZJMのBlog">
+<meta property="og:description" content="关于移动端布局你必须要懂的知识 1. 视口什么是视口,二倍图,css初始化 2. flex布局 媒体查询 less sass 3. 单位px rem vw vh">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zjm2001.github.io/2023/08/25/images/image-20230820180226418.png">
+<meta property="article:published_time" content="2023-08-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-09-01T09:17:55.409Z">
+<meta property="article:author" content="ZJM">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="Flex">
+<meta property="article:tag" content="less">
+<meta property="article:tag" content="scss">
+<meta property="article:tag" content="Bootstrap">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zjm2001.github.io/2023/08/25/images/image-20230820180226418.png"><title>移动端布局必须要懂的知识 | ZJMのBlog</title><link ref="canonical" href="https://zjm2001.github.io/2023/08/25/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B8%83%E5%B1%80/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><link rel="stylesheet" href="css/custom.css"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"25px","tocMaxDepth":4},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"carbon","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: true,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">ZJMの学习日志</div><div class="header-banner-info__subtitle">一个建立于21世纪的Blog，存活在互联网边缘！！！</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">移动端布局必须要懂的知识</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2023-08-25</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2023-09-01</span></span></div></header><div class="post-body"><div class="gallery"><img src="/../images/image-20230820180226418.png"></div><hr>
+
+        <h2 id="视口viewport以及二倍图"   >
+          <a href="#视口viewport以及二倍图" class="heading-link"><i class="fas fa-link"></i></a><a href="#视口viewport以及二倍图" class="headerlink" title="视口viewport以及二倍图"></a>视口viewport以及二倍图</h2>
+      
+        <h3 id="1-视口是什么"   >
+          <a href="#1-视口是什么" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-视口是什么" class="headerlink" title="1.视口是什么"></a>1.视口是什么</h3>
+      <figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">viewport                                                 //视口</span><br><span class="line">&lt;meta</span><br><span class="line">initial-scale                            初始缩放比大于<span class="number">0</span>的数字</span><br><span class="line">maxium-scale                        最大缩放比 大于零的数字</span><br><span class="line">minium-scale                        最小缩放比 大一零数字</span><br><span class="line">user-scalable             用户是否可以缩放 yes或者no（<span class="number">1</span>或<span class="number">0</span>）        //视口标签</span><br><span class="line">一般情况vscode会自己生成好</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="2-二倍图"   >
+          <a href="#2-二倍图" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-二倍图" class="headerlink" title="2.二倍图"></a>2.二倍图</h3>
+      <figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">💡 物理像素就是我们说的分辨率</span><br><span class="line">px是开发像素   在苹果八中<span class="number">1px</span>开发像素=<span class="number">2</span>个物理像素</span><br><span class="line">视网膜屏下图片给我们放大会模糊开发图片应当大屏幕像素比倍数然后再更改大小</span><br><span class="line">这就是二倍图多倍图的设计</span><br><span class="line"><span class="attribute">background</span>-sizi：图片宽  图片高                  //背景！图缩放写一个是宽高就等比例缩放</span><br><span class="line">（可以百分比）继承父亲</span><br><span class="line">cover         完全覆盖盒子            </span><br><span class="line"><span class="attribute">contain</span>     图像扩展至最大尺寸</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="3-移动端css初始化"   >
+          <a href="#3-移动端css初始化" class="heading-link"><i class="fas fa-link"></i></a><a href="#3-移动端css初始化" class="headerlink" title="3.移动端css初始化"></a>3.移动端css初始化</h3>
+      <figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">推荐使用  normalize<span class="selector-class">.css</span></span><br><span class="line">官网    http://necolas.github.io/normalize.css/</span><br><span class="line">流式布局（称为百分比布局）</span><br><span class="line">应该设置最大最小值避免影响盒子内容影响</span><br><span class="line">max-width                 //最大宽度</span><br><span class="line">mix-width                  //最小宽度（高度也是一样）</span><br><span class="line">移动端使用精灵图应当缩放然后再测量大小</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="Flex布局"   >
+          <a href="#Flex布局" class="heading-link"><i class="fas fa-link"></i></a><a href="#Flex布局" class="headerlink" title="Flex布局"></a>Flex布局</h2>
+      
+        <h3 id="1-Flex布局Flex容器属性"   >
+          <a href="#1-Flex布局Flex容器属性" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-Flex布局Flex容器属性" class="headerlink" title="1.Flex布局Flex容器属性"></a>1.Flex布局Flex容器属性</h3>
+      <figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">给父亲加<span class="attribute">flex</span>盒子称为<span class="attribute">flex</span>容器其中的子元素自动成为容器成员来操纵里面成员</span><br><span class="line">对父元素设置的</span><br><span class="line"><span class="attribute">flex-direction</span>                （x轴默认主轴 元素按照主轴排列）           //主轴的方向</span><br><span class="line">row                     默认从左到右</span><br><span class="line">row-reverse             从右到左</span><br><span class="line">column                  从上到下（设置y为主轴）</span><br><span class="line">column -reverse         从下到上</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="attribute">justify-content</span>                                            //设置主轴上子元素排列方式</span><br><span class="line"><span class="attribute">flex</span>-start                默认值从头部开始</span><br><span class="line"><span class="attribute">flex</span>-end                  从尾部开始排列</span><br><span class="line">center                    再主轴居中对齐</span><br><span class="line">space-evenly             所有地方间距相等</span><br><span class="line">space-around             每个子集都有相同间距(中间子集间距为<span class="number">2</span>倍的子集间距)</span><br><span class="line">space-between            先两边贴边再平分剩余空间   ！！！</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="attribute">flex-wrap</span>                                                        //设置子元素是否换行</span><br><span class="line">nowrap                 默认不换行 一行装不下会缩小子元素宽度</span><br><span class="line">wrap                   换行向下</span><br><span class="line">wrap-reverse           向上换行</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="attribute">align-items</span>                                          //设置侧轴上子元素排列方式(单行)</span><br><span class="line"><span class="attribute">flex</span>-start             从上到下</span><br><span class="line"><span class="attribute">flex</span>-end               从下到上</span><br><span class="line">center                 挤再一起居中（垂直居中）</span><br><span class="line">stretch                拉伸(默认)</span><br><span class="line"><span class="attribute">flex-flow</span>              复合属性，相当于同时设置<span class="attribute">flex-direction</span>  <span class="attribute">flex-wrap</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="attribute">align-content</span>                                        //设置侧轴上子元素排列方式(多行)</span><br><span class="line"><span class="attribute">flex</span>-start              默认从侧轴头部开始排列</span><br><span class="line"><span class="attribute">flex</span>-end                再侧轴尾部开始排列</span><br><span class="line">center                  侧轴中间显示</span><br><span class="line">space-around            子项在侧轴平分剩余空间</span><br><span class="line">space-between           子项再侧轴先分布两头，再平均分</span><br><span class="line">stretch                 设置子项元素高度平分父元素高度</span><br><span class="line"></span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="2-Flex-元素-儿子的属性"   >
+          <a href="#2-Flex-元素-儿子的属性" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-Flex-元素-儿子的属性" class="headerlink" title="2.Flex 元素(儿子的属性)"></a>2.Flex 元素(儿子的属性)</h3>
+      <figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">flex</span> ：<span class="number">1</span>；                                           // 分配剩余空间份数</span><br><span class="line"></span><br><span class="line"><span class="attribute">align-self</span> :                                         //控制子项自己一个再侧轴排列</span><br><span class="line">auto                    默认值继承父亲align-items没有父容器为stretch</span><br><span class="line">stretch                 拉伸充满</span><br><span class="line">center                  元素中心显示</span><br><span class="line">flex-start              元素容器开头</span><br><span class="line">flex-end                元素容器结尾</span><br><span class="line">baseline                位于元素容器基线上</span><br><span class="line"></span><br><span class="line">order:                                               //定义排列顺序  越小越靠前默认<span class="number">0</span></span><br><span class="line"></span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="媒体查询以及移动端布局方式"   >
+          <a href="#媒体查询以及移动端布局方式" class="heading-link"><i class="fas fa-link"></i></a><a href="#媒体查询以及移动端布局方式" class="headerlink" title="媒体查询以及移动端布局方式"></a>媒体查询以及移动端布局方式</h2>
+      
+        <h3 id="1-媒体查询"   >
+          <a href="#1-媒体查询" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-媒体查询" class="headerlink" title="1. 媒体查询"></a>1. 媒体查询</h3>
+      <figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span>   媒体类型 <span class="keyword">and</span>   (媒体特征)&#123;                        //媒体查询</span><br><span class="line">&#125;</span><br><span class="line">mediatype             媒体类型值</span><br><span class="line"><span class="attribute">all</span>                   所有设备</span><br><span class="line">print                 打印机打印预览</span><br><span class="line">scerr                 电脑 平板 手机</span><br><span class="line"></span><br><span class="line">关键字</span><br><span class="line">and                  连接 相当于且</span><br><span class="line">not                  排除某个相当于非</span><br><span class="line">only                 指定某个特定</span><br><span class="line"></span><br><span class="line">媒体特性</span><br><span class="line"><span class="attribute">width</span>              定义输出设备界面可见区域宽度</span><br><span class="line"><span class="attribute">min-width</span>          定义输出设备中页面最小可见宽度</span><br><span class="line"><span class="attribute">max-width</span>         定义输出设备最大可见区域宽度</span><br><span class="line">引入资源就是针对不同的屏幕尺寸调用不同的css文件</span><br><span class="line">&lt;link  rel=&quot;stylesheet&quot;  href=&#x27;&#x27;css文件  &quot; media =&quot;screen and (媒体特征)&quot;&gt;</span><br><span class="line"></span><br><span class="line">书写顺序   应该从小到大写</span><br><span class="line"><span class="attribute">min-width</span>(从小到大)</span><br><span class="line">max -<span class="attribute">width</span>(从大到小)</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="2-rem单位以及vw与vh"   >
+          <a href="#2-rem单位以及vw与vh" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-rem单位以及vw与vh" class="headerlink" title="2.rem单位以及vw与vh"></a>2.rem单位以及vw与vh</h3>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">可通过修改html里面的文大小来给变页面中元素大小控制整体</span><br><span class="line">当设置</span><br><span class="line">html&#123;</span><br><span class="line">   font-size:30px          1个rem 等同于 30px</span><br><span class="line">&#125;</span><br><span class="line">可使用媒体查询改变html文字大小实现不同屏幕下的布局</span><br><span class="line">flexible.js  使用rem 将屏幕分为10份(如在365px屏幕下一个rem就是36.5px)</span><br><span class="line">使用插件要更改css root才能转换为要使用的rem</span><br><span class="line">还是要给屏幕给一个超过你所要项目大小就将font-sizi改好</span><br><span class="line">记得提权!important</span><br><span class="line"></span><br><span class="line">相对单位根据屏幕可见视口分成100分1个就是一份</span><br><span class="line">(一般只使用一个不会vw wh一起用 对全面屏手机不友好)</span><br><span class="line">vw(viewport width)</span><br><span class="line">1vw = 1/100视口宽度</span><br><span class="line">vh(viewport height)</span><br><span class="line">1vh = 1/100视口宽度</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="Less-与Scss"   >
+          <a href="#Less-与Scss" class="heading-link"><i class="fas fa-link"></i></a><a href="#Less-与Scss" class="headerlink" title="Less 与Scss"></a>Less 与Scss</h2>
+      
+        <h3 id="1-Less"   >
+          <a href="#1-Less" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-Less" class="headerlink" title="1.Less"></a>1.Less</h3>
+      <figure class="highlight less"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> 使用<span class="selector-tag">less</span>直接新建<span class="selector-tag">less</span>文件</span><br><span class="line"> <span class="selector-tag">html</span>不能直接使用<span class="selector-tag">less</span>   <span class="selector-tag">vscode</span>中插件<span class="selector-tag">easy</span> <span class="selector-tag">less</span></span><br><span class="line"> 下载后保存<span class="selector-tag">less</span>文件回自动生成<span class="selector-tag">css</span>文件然后<span class="selector-tag">html</span>引用</span><br><span class="line"></span><br><span class="line"><span class="number">1.0</span>  <span class="selector-tag">less</span>中变量的声明</span><br><span class="line">    @变量名:值;</span><br><span class="line"><span class="number">2.0</span> <span class="selector-tag">less</span>书写嵌套规则</span><br><span class="line"><span class="selector-tag">less</span>嵌套 子元素样式直接写在父元素里面就好了</span><br><span class="line">如果有伪类  交集选择器  伪元素选择器  我们内层选择器前面加<span class="selector-tag">&amp;</span></span><br><span class="line"><span class="number">3.0</span> <span class="selector-tag">less</span>运算</span><br><span class="line"></span><br><span class="line">颜色<span class="number">16</span>进制也可以运算</span><br><span class="line">可以进行加减乘除运算   除法运算要加(<span class="number">15</span> / <span class="number">2px</span> )</span><br><span class="line">运算符左右都要敲空格</span><br><span class="line">两个数参与运算 如果只有一个有单位,则与有单位的为准</span><br><span class="line">两个数参与运算 ,如果<span class="number">2</span>个都有单位 且不一样以第一个单位为准</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="2-less文件操作"   >
+          <a href="#2-less文件操作" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-less文件操作" class="headerlink" title="2.less文件操作"></a>2.less文件操作</h3>
+      <figure class="highlight less"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">&quot;less名&quot;</span>          文件导入</span><br><span class="line">less导出文件到指定文件夹</span><br><span class="line">方法一</span><br><span class="line">配置easyless产检实现</span><br><span class="line">设置→搜索easyless→在setting.json中编辑</span><br><span class="line">json文件中添加代码</span><br><span class="line"><span class="string">&quot;out&quot;</span>: <span class="string">&quot;路径最后要加/&quot;</span></span><br><span class="line">方法二</span><br><span class="line">less文件中添加</span><br><span class="line"><span class="comment">// out: 路径也要加斜杠</span></span><br><span class="line"></span><br><span class="line">禁止导出</span><br><span class="line">less第一行添加</span><br><span class="line"><span class="comment">// out:false</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="3-scss"   >
+          <a href="#3-scss" class="heading-link"><i class="fas fa-link"></i></a><a href="#3-scss" class="headerlink" title="3.scss"></a>3.scss</h3>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">💡 sass使用$来标记变量   $变量名: 变量值</span><br><span class="line"></span><br><span class="line">也可以变量符合属性    块级中声明只能在块级中使用 </span><br><span class="line"></span><br><span class="line">以空格分割的多属性值也可以标识变量</span><br><span class="line"></span><br><span class="line">$basic-border: 1px solid black;</span><br><span class="line"></span><br><span class="line">&amp;选择父级             (其他使用基本和less保持一致)</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="Bootstrap"   >
+          <a href="#Bootstrap" class="heading-link"><i class="fas fa-link"></i></a><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h2>
+      
+        <h3 id="1-简单使用"   >
+          <a href="#1-简单使用" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-简单使用" class="headerlink" title="1.简单使用"></a>1.简单使用</h3>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">💡 官方文档   https://v3.bootcss.com/</span><br><span class="line"></span><br><span class="line">引入插件需要先引入jq文件在引自己的js文件</span><br><span class="line"></span><br><span class="line">布局容器</span><br><span class="line">.container    响应式布局容器分大屏小萍</span><br><span class="line"></span><br><span class="line">.container-fluid  流式布局百分比宽度</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="2-栅格系统"   >
+          <a href="#2-栅格系统" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-栅格系统" class="headerlink" title="2.栅格系统"></a>2.栅格系统</h3>
+      <figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">把视口尺寸分成<span class="number">12</span>等分</span><br><span class="line">行 row</span><br><span class="line">列 colu</span><br><span class="line">小屏(手机)                   <span class="selector-class">.col-xs-</span>占列份数</span><br><span class="line">小屏设备(平板 )            <span class="selector-class">.col-sm-</span>占列份数</span><br><span class="line">中等                           <span class="selector-class">.col-md-</span>占列份数</span><br><span class="line">宽屏                           <span class="selector-class">.col-lg-</span>占列份数</span><br><span class="line">列嵌套最好加一个行 row</span><br><span class="line">列偏移</span><br><span class="line"><span class="selector-class">.col-</span>类型-offset-偏移份数</span><br><span class="line">列排序</span><br><span class="line"><span class="selector-class">.col-leix-push-</span>要推的份数</span><br><span class="line"><span class="selector-class">.col-leix-pull-</span>要拉的份数</span><br><span class="line">响应式工具</span><br><span class="line">hidden-类型           就会某个屏幕下隐藏</span><br><span class="line">visible-leix          就会再某一个屏幕下显示</span><br><span class="line"></span><br></pre></td></tr></table></div></figure>
+
+
+
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://zjm2001.github.io">ZJM</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://zjm2001.github.io/2023/08/25/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B8%83%E5%B1%80/">https://zjm2001.github.io/2023/08/25/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B8%83%E5%B1%80/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-cn" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://zjm2001.github.io/tags/%E5%89%8D%E7%AB%AF/">前端</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://zjm2001.github.io/tags/Flex/">Flex</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://zjm2001.github.io/tags/less/">less</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://zjm2001.github.io/tags/scss/">scss</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://zjm2001.github.io/tags/Bootstrap/">Bootstrap</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2023/08/26/javascript%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8E%E8%BF%90%E7%AE%97%E7%AC%A6/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">javascript数据类型及运算符</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2023/08/23/CSS%E7%AC%AC%E5%9B%9B%E5%A4%A9/"><span class="paginator-prev__text">CSS第四天</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="utterances-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%86%E5%8F%A3viewport%E4%BB%A5%E5%8F%8A%E4%BA%8C%E5%80%8D%E5%9B%BE"><span class="toc-number">1.</span> <span class="toc-text">
+          视口viewport以及二倍图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%A7%86%E5%8F%A3%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.1.</span> <span class="toc-text">
+          1.视口是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BA%8C%E5%80%8D%E5%9B%BE"><span class="toc-number">1.2.</span> <span class="toc-text">
+          2.二倍图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%A7%BB%E5%8A%A8%E7%AB%AFcss%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">1.3.</span> <span class="toc-text">
+          3.移动端css初始化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flex%E5%B8%83%E5%B1%80"><span class="toc-number">2.</span> <span class="toc-text">
+          Flex布局</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Flex%E5%B8%83%E5%B1%80Flex%E5%AE%B9%E5%99%A8%E5%B1%9E%E6%80%A7"><span class="toc-number">2.1.</span> <span class="toc-text">
+          1.Flex布局Flex容器属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Flex-%E5%85%83%E7%B4%A0-%E5%84%BF%E5%AD%90%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-number">2.2.</span> <span class="toc-text">
+          2.Flex 元素(儿子的属性)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2%E4%BB%A5%E5%8F%8A%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">
+          媒体查询以及移动端布局方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2"><span class="toc-number">3.1.</span> <span class="toc-text">
+          1. 媒体查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-rem%E5%8D%95%E4%BD%8D%E4%BB%A5%E5%8F%8Avw%E4%B8%8Evh"><span class="toc-number">3.2.</span> <span class="toc-text">
+          2.rem单位以及vw与vh</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-%E4%B8%8EScss"><span class="toc-number">4.</span> <span class="toc-text">
+          Less 与Scss</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Less"><span class="toc-number">4.1.</span> <span class="toc-text">
+          1.Less</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-less%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-number">4.2.</span> <span class="toc-text">
+          2.less文件操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-scss"><span class="toc-number">4.3.</span> <span class="toc-text">
+          3.scss</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bootstrap"><span class="toc-number">5.</span> <span class="toc-text">
+          Bootstrap</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8"><span class="toc-number">5.1.</span> <span class="toc-text">
+          1.简单使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%A0%85%E6%A0%BC%E7%B3%BB%E7%BB%9F"><span class="toc-number">5.2.</span> <span class="toc-text">
+          2.栅格系统</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/tx.jpeg" alt="avatar"></div><p class="sidebar-ov-author__text">握不住的沙，不如扬了它</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/zjm2001" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://res.abeim.cn/api/qq/?qq=2215539769" target="_blank" rel="noopener" data-popover="social.QQmail" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">QQ 邮箱</span></a><a class="sidebar-ov-social-item" href="https://res.abeim.cn/api/qq/?qq=2215539769" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">10</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">7</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">16</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-cn" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2023</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>ZJM</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v6.3.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.8.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="150" alpha="0.5" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.xml';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ 文章无标题 ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);
+
+function safeOpenUrl(url) {
+  var newTab = window.open();
+  newTab.opener = null;
+  newTab.location = url;
+}
+
+function extSearch(engine) {
+  var engines = {
+    google: 'https://www.google.com/search?q=',
+    bing: 'https://cn.bing.com/search?q=',
+    baidu: 'https://www.baidu.com/s?ie=UTF-8&wd=',
+  };
+  var host = window.location.host;
+  var query = $('.search-input input').val().toLowerCase().trim();
+  var uri = engines[engine] + query + ' site:' + host;
+
+  if (query) {
+    safeOpenUrl(uri);
+  } else {
+    Stun.utils.popAlert('warning', '请输入字符');
+  }
+}
+
+var assistSearchList = window.CONFIG.assistSearch;
+
+if (Array.isArray(assistSearchList)) {
+  assistSearchList.forEach(function (name) {
+    document.querySelector('.search-btns-item--' + name).addEventListener('click', function () {
+      extSearch(name);
+    }, false);
+  });
+}</script><script>function loadUtterances() {
+  var d = document, s = d.createElement('script');
+  var container = d.getElementById('utterances-container');
+
+  if (!container) {
+    return;
+  }
+  s.src = 'https://utteranc.es/client.js';
+  s.setAttribute('repo', 'zjm2001/comment');
+  s.setAttribute('issue-term', 'title');
+  s.setAttribute('label', 'utterances');
+  s.setAttribute('theme', 'github-light');
+  s.setAttribute('crossorigin', 'anonymous');
+  s.setAttribute('async', '');
+  if (false) {
+    s.setAttribute('data-pjax-rm', '');
+  }
+  container.append(s);
+}
+
+if (false) {
+  loadUtterances();
+} else {
+  window.addEventListener('DOMContentLoaded', loadUtterances, false);
+}</script><script src="/js/utils.js?v=2.8.0"></script><script src="/js/stun-boot.js?v=2.8.0"></script><script src="/js/scroll.js?v=2.8.0"></script><script src="/js/header.js?v=2.8.0"></script><script src="/js/sidebar.js?v=2.8.0"></script><script type="application/json" src="/search.xml"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/haruto.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body></html>
