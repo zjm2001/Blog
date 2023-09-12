@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://zjm2001.github.io/2023/09/10/images/image-20230910200358658.png">
 <meta property="article:published_time" content="2023-09-09T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-09-12T12:40:07.197Z">
+<meta property="article:modified_time" content="2023-09-12T12:44:59.627Z">
 <meta property="article:author" content="ZJM">
 <meta property="article:tag" content="前端">
 <meta property="article:tag" content="面试">
@@ -47,7 +47,17 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 
 <ul>
 <li><p>知识点:<br>当谈到HTTP（Hypertext Transfer Protocol）和HTTPS（Hypertext Transfer Protocol Secure）时，这两者都是用于在计算机网络上传输数据的协议。<br>HTTP 是一种无状态的协议，它使用TCP作为传输层协议，用于在Web浏览器和Web服务器之间传输信息，常用于页面请求和响应。HTTP的常见端口号是80。<br>然而，HTTPS是在HTTP上加密和身份验证的安全版本。它使用公钥加密算法（如SSL &#x2F; TLS）来保护数据的传输，并确保通信的机密性和完整性。HTTPS的常见端口号是443。<br>HTTP和HTTPS的主要区别在于安全性。HTTPS通过加密和数字证书验证确保了数据的安全性和真实性。在HTTPS中，服务器和浏览器之间的通信是通过使用SSL &#x2F; TLS协议来进行加密和保护的。<br>对于前端开发而言，了解HTTP和HTTPS的基本概念非常重要。当我们在开发网站时，需要考虑使用HTTPS来加强对数据的保护，特别是在进行用户登录、交易或传输敏感信息时。同时，还要了解如何在前端页面中正确地处理HTTP和HTTPS请求，以确保数据的安全性和正确性。</p>
-<p>https 协议的缺点 1.https 握手阶段比较费时，2.会使页面加载时间延长 50%，增加 10%~20%的耗电。3.https 缓存不如 http 高效，会增加数据开销。 SSL 证书也需要钱，功能越强大的证书费用越高。 4.SSL 证书需要绑定 IP，不能再同一个 ip 上绑定多个域名，ipv4 资源支持不了这种消耗</p>
+<p>https 协议的缺点 </p>
+<ol>
+<li><p>https 握手阶段比较费时，</p>
+</li>
+<li><p>会使页面加载时间延长 50%，增加 10%~20%的耗电。</p>
+</li>
+<li><p>https 缓存不如 http 高效，会增加数据开销。 SSL 证书也需要钱，功能越强大的证书费用越高。</p>
+</li>
+<li><p>SSL 证书需要绑定 IP，不能再同一个 ip 上绑定多个域名，ipv4 资源支持不了这种消耗</p>
+</li>
+</ol>
 </li>
 </ul>
 <hr>
@@ -106,7 +116,8 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
           <a href="#浏览器常见存储方式" class="heading-link"><i class="fas fa-link"></i></a><a href="#浏览器常见存储方式" class="headerlink" title="浏览器常见存储方式"></a>浏览器常见存储方式</h2>
       <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">回答:</span><br><span class="line">cookie、sessionStorage和localStorage是在客户端存储数据的三种常见方式，它们之间有一些区别：</span><br><span class="line">    存储位置：</span><br><span class="line">        cookie: 存储在客户端浏览器中，并在每次HTTP请求时都会自动发送到服务器。</span><br><span class="line">        sessionStorage: 存储在浏览器的会话存储空间中，仅在当前会话期间有效，浏览器关闭后会被清除。</span><br><span class="line">        localStorage: 存储在浏览器的持久化存储空间中，除非手动清除，否则会一直保留。</span><br><span class="line">    容量限制：</span><br><span class="line">        cookie: 大小限制为4KB，每个域名下的cookie总数也有限制。</span><br><span class="line">        sessionStorage和localStorage: 大小限制一般为5MB或更大，可以存储较大数量的数据。</span><br><span class="line">    数据生命周期：</span><br><span class="line">        cookie: 可以设置过期时间，存储在客户端并在过期时间之前有效。</span><br><span class="line">        sessionStorage: 仅在当前会话期间有效，即浏览器关闭或标签页关闭后会被清除。</span><br><span class="line">        localStorage: 永久有效，除非手动清除或代码删除。</span><br><span class="line">    数据访问权限：</span><br><span class="line">        cookie: 具有域名访问权限，可以在不同页面、不同标签间共享。</span><br><span class="line">        sessionStorage: 仅对创建数据的页面及其后续页面有效，不同标签页之间数据不共享。</span><br><span class="line">        localStorage: 对创建数据的页面及其后续页面有效，不同标签页之间数据共享。</span><br><span class="line"></span><br></pre></td></tr></table></div></figure>
 
-<hr>
+
+
 <hr>
 <hr>
 <hr>
